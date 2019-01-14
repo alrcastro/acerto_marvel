@@ -1,0 +1,71 @@
+﻿@model MarvelCore.Models.ListModel
+@section Styles {
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/list.css">
+}
+    <script src="~/lib/jszip.min.js" > </script>
+    <script src="~/lib/pptcreator.js"></script>
+    <script>
+        /*var items = JSON.parse('Json.Serialize(Model.Items)');
+        const pptTemplate = '/assets/template.pptx';
+
+        let convertAndDownload = () => {
+            // Converte para evetiar erros no ppt
+            items.map(i => { i.var_nome = i.name; i.var_desc = i.description; i.imgData = [{ name: "Image", path: i.thumbnail.uri }]; });
+            let objs = {
+                data: items
+            };            let pptx = new Presentation();
+            pptx.loadAndProcess(objs, pptTemplate).then(() => { pptx.downloadBuffer() });
+        }
+        */
+    </script>
+    <div class="container">
+        <br />
+        
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                
+                <form class="card card-sm">
+                    <div class="card-body row no-gutters align-items-center">
+
+                        <div class="col">
+
+                            @Html.TextBoxFor(m => m.SearchText, new { @class = "form-control form-control-lg form-control-borderless", type = "search", placeholder = "Nome do heroi" })
+                            
+                        </div>
+                        <div>
+                            <button class="btn btn-lg btn-success" type="submit"> Pesquisar </button>
+                           
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        @if (Model.Items != null && Model.Items.Count > 0)
+    {
+        <br />
+        @foreach (var heroi in Model.Items)
+    {
+        <div class="row">
+            <div class="[ col-xs-12 col-sm-offset-0 col-sm-8 ]">
+                <ul class="event-list">
+                    <li>
+                        <img src="@heroi.Thumbnail.URI" />
+                        <div class="info">
+                            <h2 class="title">@heroi.Name</h2>
+                            <p class="desc">@heroi.LimitedDescription</p>
+                            <ul>
+                                <li style="width:50%;"><span class="fa fa-book"></span> @heroi.Histories.Count Histórias </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+}
+
+
+}
+
+    </div>
+ 

@@ -1,0 +1,31 @@
+﻿
+@page
+@model MarvelCore.Models.User
+
+@section Styles{
+    <link href="~/css/user.css" rel="stylesheet" />
+}
+<div id="LoginForm">
+    <div class="container">
+        <h1 class="form-heading">login Form</h1>
+        <div class="login-form">
+            <div class="main-div">
+                <div class="panel">
+                    <h2>Admin Login</h2>
+                    <p>Entre com o usuario e senha (padrão admin : admin)</p>
+                </div>
+                <form method="post">
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Login, new { @class="form-control", placeholder="Usuario" })
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", placeholder = "Senha", type = "password" })                        
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
